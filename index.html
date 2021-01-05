@@ -10,14 +10,129 @@
 </head>
 <body>
     <div class="container">
-    <h1>
-        Hello Mimi 
-    </h1>
-    <a href=""class="btn btn-primary"> Click me </a>
+    <div class="card">
+      <div class="card-body " >
+    
+        <div class="row">
+          <div class="col-6">
+            <form id="lookforcity">
+              <input type="text" class="form-group" placeholder="Type a city" id="citySearch" width="6px">
+                <input type="submit" placeholder="Search" value="🔍" class="form-group" />
+                <button type="button" class="btn btn-primary" id="currLoc"> Current Location </button>
+            </form>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-6" id="left-card">
+            <div class="card">
+              <div class="card-body">
+        
+                <div class="row">
+                  <div class="col-6" id="city">
+                    <h1>
+                      <span id="cityNow">
+                        Berlin
+                      </span>
+                      <span id="temp">21°C</span>
+                    </h1>
+                    <p>
+                      <img id="emojihoy" src="" />
+                      <span> <a href="" id="celcius">°C</a> / <a href="" id="fAH">°F</a></span> <br>
+                      <span id="moreInfo"> <br></span>
+                    </p>
+                    <p>
+                      <span id="dateNow">
+                      sunday 5:00,  24 / 2021
+                      </span>
+                    </p>
+                  </div>
+        
+                  <div class="col-6" id="estatus">
+                    <h2 id="descrip"> Partly cloudly</h2>
+                    <h4 id="max_min"> <span id="max"> 24°</span>/<span id="min"> 24°</span> </h4>
+                    <ul>
+                      
+                     <li id="speed"> Wind speed:</li>
+                     <li id="humid"> Humidity: </li>
+                     <li id="feels"> Feels like: </li>
+                      
+                    </ul>
+                  </div>
 
+                  <hr/>
 
-</div>
+                  <div class="col-12" >
+                    <ul class="list-group list-group-horizontal-sm" id="hourly-emoji" >
+                    <li class="list-group-item border-light mb-3" id="2h"> 🌤</li>
+                    <li class="list-group-item border-light mb-3" id="4h"> 🌤 </li>
+                    <li class="list-group-item border-light mb-3" id="6h"> 🌤</li>
+                    <li class="list-group-item border-light mb-3" id="8h"> 🌤</li>
+                    <li class="list-group-item border-light mb-3" id="10h"> 🌤</li> 
+                    </ul>
+                  </div>
+
+                  <div class="col-12" >
+                    <ul class="list-group list-group-horizontal-sm" id="hourly">
+                      <li class="list-group-item border-light mb-3" id="2h"> 4 pm</li>
+                      <li class="list-group-item border-light mb-3" id="4h"> 6 pm  </li>
+                      <li class="list-group-item border-light mb-3" id="6h"> 8 pm</li>
+                      <li class="list-group-item border-light mb-3" id="8h"> 10 pm </li>
+                      <li class="list-group-item border-light mb-3" id="10h"> 12 am </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6" id="right-card">
+            <div class="card">
+              <div class="card-body">
+          
+                <div class="row">
+                  <div class="col-5" id="Forecast-days">
+                    <ul id="daysForecast">
+                      <li> Monday 05/10 </li>
+                      <li> Monday 05/10 </li>
+                      <li> Monday 05/10 </li>
+                      <li> Monday 05/10 </li>
+                      <li> Monday 05/10 </li>
+                    </ul>
+                  </div>
+          
+                    <div class="col-4" id="Forecast-weather">
+                      <ul id="weatherForecast">
+                        <li> 25°/15° </li>
+                        <li> 22°/14° </li>
+                        <li> 22°/14° </li>
+                        <li> 22°/14° </li>
+                        <li> 22°/14° </li>
+                      </ul>
+                    </div>
+
+                    <div class="col-3" id="Forecast-emoji">
+                    <ul id="emojiForecast">
+                      <li>🌤 </li>
+                      <li>🌤 </li>
+                      <li>🌤 </li>
+                      <li>🌤 </li>
+                      <li>🌤 </li>
+                    </ul>
+                    </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<a href="https://github.com/MimiNasa/Vanilla-Weather-App" target="blank">
+  Open_Source code by
+</a> <strong> Nohemy Navarro </strong>
+
+  </div>
     <script src="src/app.js"></script>
 </body>
 </html>
