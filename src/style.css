@@ -4,13 +4,21 @@
   padding: 20px;
   border: 2px solid #24648f;
   border-radius: 10px;
+  background-image: url(https://images.pexels.com/photos/139366/pexels-photo-139366.jpeg?cs=srgb&dl=pexels-donald-tong-139366.jpg&fm=jpg);
 }
 
-#left-card,
-#right-card {
+#left-card {
   margin: 5px auto;
   background-color: #bcd2e0;
+  padding: 5px;
 }
+
+#right-card {
+  margin: 30px auto;
+  background-color: #bcd2e0;
+  padding: 5px;
+}
+
 li {
   position: relative;
   display: block;
@@ -18,11 +26,30 @@ li {
   margin: 5px auto;
 }
 
-#daysForecast,
-#weatherForecast,
-#emojiForecast {
+#Forecast-days,
+#Forecast-weather,
+#Forecast-emoji {
   margin: 0 auto;
   list-style: none;
-  text-align: left;
+  text-align: center;
   padding: 2px;
+}
+
+ul {
+  padding: 0px;
+  text-align: center;
+}
+
+#cityNow,
+#temp,
+#descrip,
+#max_min,
+#title2 {
+  font-size: 27px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+}
+
+#max_min {
+  font-size: 24px;
 }
