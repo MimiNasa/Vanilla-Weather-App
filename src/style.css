@@ -19,11 +19,16 @@
   padding: 5px;
 }
 
-li {
+li,
+.border-light {
   position: relative;
   display: block;
   text-align: center;
-  margin: 5px auto;
+  margin: 0 auto;
+}
+
+#firstIC {
+  margin-bottom: 0px;
 }
 
 #Forecast-days,
@@ -51,5 +56,14 @@ ul {
 }
 
 #max_min {
-  font-size: 24px;
+  font-size: 20px;
+  color: #0000008a;
+}
+
+.icon {
+  margin: 0 auto;
+}
+
+.card-body {
+  padding-bottom: 0px;
 }
