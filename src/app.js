@@ -5,11 +5,21 @@
 function searching (event){
   event.preventDefault();
 
+  let Faranheit= document.querySelector("#fAH");
+  Faranheit.setAttribute("style","font-size:16px");
+  Faranheit.setAttribute("class","unactive");
+
+  let Celcius= document.querySelector("#celcius");
+  Celcius.setAttribute("style","font-size:30px");
+  Celcius.setAttribute("class","active");
+
+
   let apiKey = "c56134558ca84ab1e7072449202b8614";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
   let nowCity=document.querySelector("#citySearch");
 
   let info = `${apiUrl}${nowCity.value}&units=metric&appid=${apiKey}`;
+  console.log(info);
 
   //api for forecast//
   let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
@@ -77,44 +87,26 @@ function searching (event){
    //Daily forecast//
 
   let daysTemI= document.querySelector("#weatherForecastUno");
-  daysTemI.innerHTML=`${Math.round(response.data.list[8].main.temp_max)}°/ ${Math.round(response.data.list[8].main.temp_min)}°`;
+  daysTemI.innerHTML=`${Math.round(response.data.list[1].main.temp_max)}°/ ${Math.round(response.data.list[8].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[8].weather[0].icon}@2x.png" style="height: 40px"/>`;
 
    let daysTemII= document.querySelector("#weatherForecastDos");
-  daysTemII.innerHTML=`${Math.round(response.data.list[16].main.temp_max)}°/ ${Math.round(response.data.list[16].main.temp_min)}°`;
+  daysTemII.innerHTML=`${Math.round(response.data.list[9].main.temp_max)}°/ ${Math.round(response.data.list[16].main.temp_min)}°      <img src="http://openweathermap.org/img/wn/${response.data.list[16].weather[0].icon}@2x.png" style="height: 40px"/>`;
 
   let daysTemIII= document.querySelector("#weatherForecastTre");
-  daysTemIII.innerHTML=`${Math.round(response.data.list[24].main.temp_max)}°/ ${Math.round(response.data.list[24].main.temp_min)}°`;
+  daysTemIII.innerHTML=`${Math.round(response.data.list[17].main.temp_max)}°/ ${Math.round(response.data.list[24].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[24].weather[0].icon}@2x.png" style="height: 40px"/>`;
   
   let daysTemIV= document.querySelector("#weatherForecastVier");
-  daysTemIV.innerHTML=`${Math.round(response.data.list[32].main.temp_max)}°/ ${Math.round(response.data.list[32].main.temp_min)}°`;
+  daysTemIV.innerHTML=`${Math.round(response.data.list[25].main.temp_max)}°/ ${Math.round(response.data.list[32].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[32].weather[0].icon}@2x.png" style="height: 40px"/>`;
   
   let daysTemV= document.querySelector("#weatherForecastQ");
-  daysTemV.innerHTML=`${Math.round(response.data.list[39].main.temp_max)}°/ ${Math.round(response.data.list[39].main.temp_min)}°`;
+  daysTemV.innerHTML=`${Math.round(response.data.list[33].main.temp_max)}°/ ${Math.round(response.data.list[39].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[39].weather[0].icon}@2x.png" style="height: 40px"/>`;
   
- 
-  // Emojinforecast//
-   let emojiUno= document.querySelector("#emojiForecastI");
-   emojiUno.innerHTML=`<img src="http://openweathermap.org/img/wn/${response.data.list[8].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let emojiDos= document.querySelector("#emojiForecastII");
-   emojiDos.innerHTML=`<img src="http://openweathermap.org/img/wn/${response.data.list[16].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let emojiTre= document.querySelector("#emojiForecastIII");
-   iconTre.innerHTML=`<img src="http://openweathermap.org/img/wn/${response.data.list[24].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let emojiVier= document.querySelector("#emojiForecastIV");
-   emojiVier.innerHTML=`<img src="http://openweathermap.org/img/wn/${response.data.list[32].weather[0].icon}@2x.png" style="height: 40px"/>`;
-   
-   let emojiV= document.querySelector("#emojiForecastV");
-   emojiV.innerHTML=`<img src="http://openweathermap.org/img/wn/${response.data.list[39].weather[0].icon}@2x.png" style="height: 40px"/>`;
   
     //let day =document.querySelector("#firstH");
   //day.innerHTML=giveTime(response.data.list[0].dt*1000);
 
   }
 
- 
- 
  axios.get(info).then(showPlace);
 
  axios.get(infoForcast).then(showForecastHourly);
@@ -123,3 +115,102 @@ function searching (event){
 
 let currCity=document.querySelector("#lookforcity");
 currCity.addEventListener("submit",searching);
+
+
+//////////link for fareheim//////////
+
+function changeFah(event){
+event.preventDefault();
+
+let Faranheit= document.querySelector("#fAH");
+Faranheit.setAttribute("style","font-size:30px");
+Faranheit.setAttribute("class","active");
+
+let Celcius= document.querySelector("#celcius");
+Celcius.setAttribute("style","font-size:16px");
+Celcius.setAttribute("class","unactive");
+
+
+let apiKey = "c56134558ca84ab1e7072449202b8614";
+let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+let nowCity=document.querySelector("#citySearch");
+
+let info2 = `${apiUrl}${nowCity.value}&units=imperial&appid=${apiKey}`;
+
+  //api for forecast Faranheit//
+  let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
+
+  let infoForcastF = `${apiUrlFor}${nowCity.value}&units=imperial&appid=${apiKey}`;
+  console.log(infoForcastF); 
+  
+ 
+  function changeWeather(response){
+
+    
+  let tempElement= document.querySelector("#temp");
+  tempElement.innerHTML=`${Math.round(response.data.main.temp)}°`;
+
+  let minTempF=document.querySelector("#min");
+   minTempF.innerHTML=`${Math.round(response.data.main.temp_min)}°`;
+
+  let maxTempF=document.querySelector("#max");
+   maxTempF.innerHTML=` ${Math.round(response.data.main.temp_max)}°`;
+
+  let speedWF=document.querySelector("#speed");
+  speedWF.innerHTML=` ${response.data.wind.speed} mph`;
+
+ let feelsWF=document.querySelector("#feels");
+  feelsWF.innerHTML=` ${Math.round(response.data.main.feels_like)}°`;
+
+  }
+
+  function showForecastHourlyF (response){
+
+   let iconUno= document.querySelector("#firstIC");
+   iconUno.innerHTML=`${Math.round(response.data.list[0].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  let iconDos= document.querySelector("#secondIC");
+   iconDos.innerHTML=`${Math.round(response.data.list[1].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  let iconTre= document.querySelector("#thidIC");
+   iconTre.innerHTML=`${Math.round(response.data.list[2].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  let iconVier= document.querySelector("#fourIC");
+   iconVier.innerHTML=`${Math.round(response.data.list[3].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@2x.png" style="height: 40px"/>`;
+   
+   //Daily forecast//
+
+  let daysTemI= document.querySelector("#weatherForecastUno");
+  daysTemI.innerHTML=`${Math.round(response.data.list[8].main.temp_max)}°/ ${Math.round(response.data.list[8].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[8].weather[0].icon}@2x.png" style="height: 40px"/>`;
+
+   let daysTemII= document.querySelector("#weatherForecastDos");
+  daysTemII.innerHTML=`${Math.round(response.data.list[16].main.temp_max)}°/ ${Math.round(response.data.list[16].main.temp_min)}°      <img src="http://openweathermap.org/img/wn/${response.data.list[16].weather[0].icon}@2x.png" style="height: 40px"/>`;
+
+  let daysTemIII= document.querySelector("#weatherForecastTre");
+  daysTemIII.innerHTML=`${Math.round(response.data.list[24].main.temp_max)}°/ ${Math.round(response.data.list[24].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[24].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  let daysTemIV= document.querySelector("#weatherForecastVier");
+  daysTemIV.innerHTML=`${Math.round(response.data.list[32].main.temp_max)}°/ ${Math.round(response.data.list[32].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[32].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  let daysTemV= document.querySelector("#weatherForecastQ");
+  daysTemV.innerHTML=`${Math.round(response.data.list[39].main.temp_max)}°/ ${Math.round(response.data.list[39].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[39].weather[0].icon}@2x.png" style="height: 40px"/>`;
+  
+  
+    //let day =document.querySelector("#firstH");
+  //day.innerHTML=giveTime(response.data.list[0].dt*1000);
+
+  }
+
+  
+
+  axios.get(info2).then(changeWeather);
+  axios.get(infoForcastF).then(showForecastHourlyF);
+}
+
+
+let tempC=document.querySelector("#celcius");
+tempC.addEventListener("click",searching);
+
+let tempF=document.querySelector("#fAH");
+tempF.addEventListener("click",changeFah);
+

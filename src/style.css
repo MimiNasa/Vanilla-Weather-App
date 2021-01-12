@@ -32,8 +32,7 @@ li,
 }
 
 #Forecast-days,
-#Forecast-weather,
-#Forecast-emoji {
+#Forecast-weather {
   margin: 0 auto;
   list-style: none;
   text-align: center;
@@ -66,4 +65,17 @@ ul {
 
 .card-body {
   padding-bottom: 0px;
+}
+
+#city,
+#estatus {
+  padding: 10px;
+}
+
+a.active {
+  color: #007bff;
+}
+
+a.unactive {
+  color: #000000;
 }
