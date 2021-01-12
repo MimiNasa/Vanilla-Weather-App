@@ -28,7 +28,12 @@ function searching (event){
   console.log(infoForcast); 
   
 
-  // information of weather searched//
+ axios.get(info).then(showPlace);
+ axios.get(infoForcast).then(showForecastHourly);
+
+ }
+
+ // information of weather searched//
 
    function showPlace (response){
    
@@ -65,10 +70,9 @@ function searching (event){
 
   //let day =document.querySelector("#dateNow");day.innerHTML=giveTime(response.data.dt*1000);
 
-    
         }
-      
-    // function for daily forecast//
+
+ // function for daily forecast//
 
   function showForecastHourly (response){
 
@@ -107,12 +111,6 @@ function searching (event){
 
   }
 
- axios.get(info).then(showPlace);
-
- axios.get(infoForcast).then(showForecastHourly);
-
- }
-
 let currCity=document.querySelector("#lookforcity");
 currCity.addEventListener("submit",searching);
 
@@ -143,8 +141,11 @@ let info2 = `${apiUrl}${nowCity.value}&units=imperial&appid=${apiKey}`;
   let infoForcastF = `${apiUrlFor}${nowCity.value}&units=imperial&appid=${apiKey}`;
   console.log(infoForcastF); 
   
- 
-  function changeWeather(response){
+  axios.get(info2).then(changeWeather);
+  axios.get(infoForcastF).then(showForecastHourly);
+}
+
+function changeWeather(response){
 
     
   let tempElement= document.querySelector("#temp");
@@ -164,49 +165,6 @@ let info2 = `${apiUrl}${nowCity.value}&units=imperial&appid=${apiKey}`;
 
   }
 
-  function showForecastHourlyF (response){
-
-   let iconUno= document.querySelector("#firstIC");
-   iconUno.innerHTML=`${Math.round(response.data.list[0].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[0].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let iconDos= document.querySelector("#secondIC");
-   iconDos.innerHTML=`${Math.round(response.data.list[1].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[1].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let iconTre= document.querySelector("#thidIC");
-   iconTre.innerHTML=`${Math.round(response.data.list[2].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[2].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let iconVier= document.querySelector("#fourIC");
-   iconVier.innerHTML=`${Math.round(response.data.list[3].main.temp)}° <br> <img src="http://openweathermap.org/img/wn/${response.data.list[3].weather[0].icon}@2x.png" style="height: 40px"/>`;
-   
-   //Daily forecast//
-
-  let daysTemI= document.querySelector("#weatherForecastUno");
-  daysTemI.innerHTML=`${Math.round(response.data.list[8].main.temp_max)}°/ ${Math.round(response.data.list[8].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[8].weather[0].icon}@2x.png" style="height: 40px"/>`;
-
-   let daysTemII= document.querySelector("#weatherForecastDos");
-  daysTemII.innerHTML=`${Math.round(response.data.list[16].main.temp_max)}°/ ${Math.round(response.data.list[16].main.temp_min)}°      <img src="http://openweathermap.org/img/wn/${response.data.list[16].weather[0].icon}@2x.png" style="height: 40px"/>`;
-
-  let daysTemIII= document.querySelector("#weatherForecastTre");
-  daysTemIII.innerHTML=`${Math.round(response.data.list[24].main.temp_max)}°/ ${Math.round(response.data.list[24].main.temp_min)}°       <img src="http://openweathermap.org/img/wn/${response.data.list[24].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let daysTemIV= document.querySelector("#weatherForecastVier");
-  daysTemIV.innerHTML=`${Math.round(response.data.list[32].main.temp_max)}°/ ${Math.round(response.data.list[32].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[32].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  let daysTemV= document.querySelector("#weatherForecastQ");
-  daysTemV.innerHTML=`${Math.round(response.data.list[39].main.temp_max)}°/ ${Math.round(response.data.list[39].main.temp_min)}°        <img src="http://openweathermap.org/img/wn/${response.data.list[39].weather[0].icon}@2x.png" style="height: 40px"/>`;
-  
-  
-    //let day =document.querySelector("#firstH");
-  //day.innerHTML=giveTime(response.data.list[0].dt*1000);
-
-  }
-
-  
-
-  axios.get(info2).then(changeWeather);
-  axios.get(infoForcastF).then(showForecastHourlyF);
-}
-
 
 let tempC=document.querySelector("#celcius");
 tempC.addEventListener("click",searching);
@@ -214,3 +172,61 @@ tempC.addEventListener("click",searching);
 let tempF=document.querySelector("#fAH");
 tempF.addEventListener("click",changeFah);
 
+
+//////////////// getting weather from current location//
+
+function getLoc(event){
+ event.preventDefault();
+
+ navigator.geolocation.getCurrentPosition(showPosition);
+
+}
+
+function showPosition(position){
+
+     let apiKey = "c56134558ca84ab1e7072449202b8614";
+     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+
+     let latitude= position.coords.latitude;
+     let longitude= position.coords.longitude;
+     let infoLoc = `${apiUrl}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+     axios.get(infoLoc).then(nameCity);
+
+     
+    
+    }
+
+    function nameCity (response){
+
+      let Faranheit= document.querySelector("#fAH");
+      Faranheit.setAttribute("style","font-size:16px");
+      Faranheit.setAttribute("class","unactive");
+
+      let Celcius= document.querySelector("#celcius");
+      Celcius.setAttribute("style","font-size:30px");
+      Celcius.setAttribute("class","active");
+
+      let nameLoc=`${response.data.name}`;
+      console.log(nameLoc);
+
+      let apiKey = "c56134558ca84ab1e7072449202b8614";
+      let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+      let infoLoc = `${apiUrl}${nameLoc}&units=metric&appid=${apiKey}`;
+       console.log(infoLoc);
+
+        //api for forecast//
+      let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
+
+      let infoForcastLoc = `${apiUrlFor}${nameLoc}&units=metric&appid=${apiKey}`;
+      console.log(infoForcastLoc); 
+  
+      axios.get(infoForcastLoc).then(showForecastHourly);
+      axios.get(infoLoc).then(showPlace);
+     }
+ 
+
+let place=document.querySelector("#currLoc");
+place.addEventListener("click", getLoc); 
+
+navigator.geolocation.getCurrentPosition(showPosition);
