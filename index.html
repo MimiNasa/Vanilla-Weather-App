@@ -39,17 +39,18 @@
                     <p class="icon">
                       <img id="emojihoy" src="" />
                       <span> <a href="#" id="celcius" class="active" >°C</a> | <a href="#" id="fAH" class="unactive">°F</a></span>
-                    </p>
-                    <p>
                       <span id="dateNow">
-                      sunday 5:00,  24 / 2021
+                        sunday 5:00, 24 / 2021
                       </span>
                     </p>
                   </div>
-        
+       
+
                   <div class="col-6" id="estatus">
                     <h2 id="descrip"> Partly cloudly</h2>
                     <h4 id="max_min"> <span id="max"> 24°</span>/<span id="min"> 24°</span> </h4>
+
+                    <br/>
                     <ul>
                       
                      <li > Wind speed:<span id="speed"> </span> </li>
@@ -58,10 +59,14 @@
                       
                     </ul>
                   </div>
-
-                  <hr/>
-
+                   
                   <div class="col-12" >
+                    
+                  <hr style="
+                      margin-top: 0px;
+                      margin-bottom: 7px;
+                      border-top-width: 2px;
+                  ">
                     <ul class="list-group list-group-horizontal-sm" id="hourly-emoji" >
                     <li class="border-light mb-3" id="firstIC"> 12° <br/> 🌤</li>
                     <li class="border-light mb-3" id="secondIC"> 12° <br /> 🌤</li>
@@ -73,9 +78,9 @@
                   <div class="col-12" >
                     <ul class="list-group list-group-horizontal-sm" id="hourly">
                       <li class="border-light mb-3" id="firstH"> 4 pm</li>
-                      <li class="border-light mb-3" id="6h"> 6 pm  </li>
-                      <li class="border-light mb-3" id="9h"> 8 pm</li>
-                      <li class="border-light mb-3" id="12h"> 10 pm </li>
+                      <li class="border-light mb-3" id="secondH"> 6 pm  </li>
+                      <li class="border-light mb-3" id="thirdH"> 8 pm</li>
+                      <li class="border-light mb-3" id="fourH"> 10 pm </li>
                     </ul>
                   </div>
 
@@ -89,17 +94,18 @@
           
                 <div class="row">
                   <header id="title2">Forecast for the week </header>
-                  <div class="col-5" id="Forecast-days">
+                  <div class="col-6" id="Forecast-days">
                     <ul id="daysForecast">
-                      <li> Monday 05/10 </li>
-                      <li> Monday 05/10 </li>
-                      <li> Monday 05/10 </li>
-                      <li> Monday 05/10 </li>
-                      <li> Monday 05/10 </li>
+                      
+                      <li class="informa" id="diaUno" style="margin-top: 8px"> Monday 05/10 </li>
+                      <li class="informa" id="diaDos"> Monday 05/10 </li>
+                      <li class="informa" id="diaTres"> Monday 05/10 </li>
+                      <li class="informa" id="diaVier"> Monday 05/10 </li>
+                      <li class="informa" id="diaCink"> Monday 05/10 </li>
                     </ul>
                   </div>
           
-                    <div class="col-7" id="Forecast-weather">
+                    <div class="col-6" id="Forecast-weather">
                       <ul id="weatherForecast">
                         <li id="weatherForecastUno"> 25°/15°     🌤 </li>
                         <li id="weatherForecastDos"> 22°/14°     🌤</li>
@@ -115,7 +121,7 @@
         </div>
         </div>
        
-
+<br>
 <a href="https://github.com/MimiNasa/Vanilla-Weather-App" target="blank">
   Open_Source code by
 </a> <strong> Nohemy Navarro </strong>

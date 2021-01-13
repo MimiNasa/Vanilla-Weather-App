@@ -1,5 +1,5 @@
 #weather-app {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
   padding: 20px;
   border: 2px solid #24648f;
@@ -19,24 +19,32 @@
   padding: 5px;
 }
 
-li,
-.border-light {
+li {
   position: relative;
   display: block;
   text-align: center;
+  padding-left: 5px;
   margin: 0 auto;
+}
+
+.informa {
+  text-align: left;
+  height: 40px;
 }
 
 #firstIC {
   margin-bottom: 0px;
 }
 
-#Forecast-days,
 #Forecast-weather {
   margin: 0 auto;
   list-style: none;
   text-align: center;
   padding: 2px;
+}
+
+#Forecast-days {
+  list-style: none;
 }
 
 ul {
@@ -70,6 +78,7 @@ ul {
 #city,
 #estatus {
   padding: 10px;
+  text-align: center;
 }
 
 a.active {
@@ -78,4 +87,10 @@ a.active {
 
 a.unactive {
   color: #000000;
+}
+
+#dateNow {
+  font-style: italic;
+  font-size: 14px;
+  display: block;
 }
