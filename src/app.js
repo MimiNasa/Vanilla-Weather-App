@@ -46,7 +46,7 @@
   let now= new Date(timestamp);
   
 
-  let days=["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+  let days=["Sun","Mon", "Tue", "Wed", "Thur", "Fri", "Sat" ];
   let today=days[now.getDay()];
 
   return `${today} ${now.getDate()}/${now.getMonth()+1}`;
@@ -66,43 +66,57 @@ function searching (event){
   Celcius.setAttribute("style","font-size:30px");
   Celcius.setAttribute("class","active");
 
-
-  let apiKey = "c56134558ca84ab1e7072449202b8614";
-  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
   let nowCity=document.querySelector("#citySearch");
-
-  let info = `${apiUrl}${nowCity.value}&units=metric&appid=${apiKey}`;
-  console.log(info);
-
-  //api for forecast//
-  let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
-
-  let infoForcast = `${apiUrlFor}${nowCity.value}&units=metric&appid=${apiKey}`;
-  console.log(infoForcast); 
-  
-
- axios.get(info).then(showPlace);
- axios.get(infoForcast).then(showForecastHourly);
-
+  showPlace(nowCity.value);
  }
 
  // information of weather searched//
 
    function showPlace (response){
-   
-   let infoWeather= response.data.weather[0].main;
+
+    
+  let apiKey = "c56134558ca84ab1e7072449202b8614";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+
+  let info = `${apiUrl}${response}&units=metric&appid=${apiKey}`;
+
+ axios.get(info).then(displayInformation);
+ 
+ axios.get(info).then(changeWeather);
+
+   //api for forecast//
+  let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
+
+  let infoForcast = `${apiUrlFor}${response}&units=metric&appid=${apiKey}`;
+ 
   
+    axios.get(infoForcast).then(showForecastHourly);
+
+   }
+
+  function displayInformation (response) {
+   
    let city= document.querySelector("#cityNow");
    city.innerHTML=`${response.data.name}`;
 
+   let speedW=document.querySelector("#speed");
+  speedW.innerHTML=` ${response.data.wind.speed} km/h`;
+
+  }
+
+  //Function to display weather information//
+
+  function changeWeather(response){
+
+    console.log(response);
+  
+   let infoWeather= response.data.weather[0].main;
    let clima= document.querySelector("#temp");
    clima.innerHTML=`${Math.round(response.data.main.temp)}°`;
 
    let emoji=document.querySelector("#emojihoy");
      emoji.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-     console.log(`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);   
-
-
+     
   let status=document.querySelector("#descrip");
    status.innerHTML=`${infoWeather}`;
 
@@ -111,9 +125,6 @@ function searching (event){
 
   let maxTemp=document.querySelector("#max");
    maxTemp.innerHTML=` ${Math.round(response.data.main.temp_max)}°`;
-
-  let speedW=document.querySelector("#speed");
-  speedW.innerHTML=` ${response.data.wind.speed} km/h`;
 
   let humidW=document.querySelector("#humid");
   humidW.innerHTML=` ${(response.data.main.humidity)}%`;
@@ -124,8 +135,7 @@ function searching (event){
   let day =document.querySelector("#dateNow");
   day.innerHTML=giveTime(response.data.dt*1000);
 
-
-        }
+   }
 
  // function for daily forecast//
 
@@ -161,19 +171,19 @@ function searching (event){
    //Daily forecast//
 
    let dateFI =document.querySelector("#diaUno");
-  dateFI.innerHTML=giveTimeF(response.data.list[1].dt*1000);
+  dateFI.innerHTML=giveTimeF(response.data.list[2].dt*1000);
 
   let dateFII =document.querySelector("#diaDos");
-  dateFII.innerHTML=giveTimeF(response.data.list[9].dt*1000);
+  dateFII.innerHTML=giveTimeF(response.data.list[10].dt*1000);
 
   let dateFIII =document.querySelector("#diaTres");
-  dateFIII.innerHTML=giveTimeF(response.data.list[17].dt*1000);
+  dateFIII.innerHTML=giveTimeF(response.data.list[18].dt*1000);
 
   let dateFIV =document.querySelector("#diaVier");
-  dateFIV.innerHTML=giveTimeF(response.data.list[25].dt*1000);
+  dateFIV.innerHTML=giveTimeF(response.data.list[26].dt*1000);
 
   let dateFV =document.querySelector("#diaCink");
-  dateFV.innerHTML=giveTimeF(response.data.list[33].dt*1000);
+  dateFV.innerHTML=giveTimeF(response.data.list[34].dt*1000);
    
   let daysTemI= document.querySelector("#weatherForecastUno");
   daysTemI.innerHTML=`${Math.round(response.data.list[1].main.temp_max)}°/ ${Math.round(response.data.list[8].main.temp_min)}°            <img src="http://openweathermap.org/img/wn/${response.data.list[8].weather[0].icon}@2x.png" style="height: 40px"/>`;
@@ -206,50 +216,38 @@ function changeFah(event){
 event.preventDefault();
 
 let Faranheit= document.querySelector("#fAH");
-Faranheit.setAttribute("style","font-size:30px");
+Faranheit.setAttribute("style","font-size:24px");
 Faranheit.setAttribute("class","active");
 
 let Celcius= document.querySelector("#celcius");
-Celcius.setAttribute("style","font-size:16px");
+Celcius.setAttribute("style","font-size:14px");
 Celcius.setAttribute("class","unactive");
 
+let nowCity=document.querySelector("#citySearch");
+  displayFarenheim(nowCity.value);
 
+}
+
+function displayFarenheim (response) {
 let apiKey = "c56134558ca84ab1e7072449202b8614";
 let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
 
+let info2 = `${apiUrl}${response}&units=imperial&appid=${apiKey}`;
 
-
-let nowCity=document.querySelector("#citySearch");
-
-let info2 = `${apiUrl}${nowCity.value}&units=imperial&appid=${apiKey}`;
+axios.get(info2).then(changeWeather);
+axios.get(info2).then(changeSpeed);
 
   //api for forecast Faranheit//
   let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
-  let infoForcastF = `${apiUrlFor}${nowCity.value}&units=imperial&appid=${apiKey}`;
-  console.log(infoForcastF); 
-  
-  axios.get(info2).then(changeWeather);
+  let infoForcastF = `${apiUrlFor}${response}&units=imperial&appid=${apiKey}`;
   axios.get(infoForcastF).then(showForecastHourly);
 }
-
-function changeWeather(response){
-
-    
-  let tempElement= document.querySelector("#temp");
-  tempElement.innerHTML=`${Math.round(response.data.main.temp)}°`;
-
-  let minTempF=document.querySelector("#min");
-   minTempF.innerHTML=`${Math.round(response.data.main.temp_min)}°`;
-
-  let maxTempF=document.querySelector("#max");
-   maxTempF.innerHTML=` ${Math.round(response.data.main.temp_max)}°`;
-
+   
+function changeSpeed (response){
+  
   let speedWF=document.querySelector("#speed");
   speedWF.innerHTML=` ${response.data.wind.speed} mph`;
-
- let feelsWF=document.querySelector("#feels");
-  feelsWF.innerHTML=` ${Math.round(response.data.main.feels_like)}°`;
 
   }
 
@@ -280,45 +278,29 @@ function showPosition(position){
      let infoLoc = `${apiUrl}lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
      axios.get(infoLoc).then(nameCity);
-
-     
     
     }
 
     function nameCity (response){
 
       let Faranheit= document.querySelector("#fAH");
-      Faranheit.setAttribute("style","font-size:16px");
+      Faranheit.setAttribute("style","font-size:14px");
       Faranheit.setAttribute("class","unactive");
 
       let Celcius= document.querySelector("#celcius");
-      Celcius.setAttribute("style","font-size:30px");
+      Celcius.setAttribute("style","font-size:24px");
       Celcius.setAttribute("class","active");
 
-      let nameLoc=`${response.data.name}`;
+      let nameLoc =document.querySelector("citySearch")
+      nameLoc=`${response.data.name}`;
+
       console.log(nameLoc);
-
-      let ciudad=document.querySelector("#cityNow");
-       ciudad.innerHTML=nameLoc
-      console.log(ciudad.innerHTML);
-
-      let apiKey = "c56134558ca84ab1e7072449202b8614";
-      let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
-      let infoLoc = `${apiUrl}${nameLoc}&units=metric&appid=${apiKey}`;
-       console.log(infoLoc);
-
-        //api for forecast//
-      let apiUrlFor = "https://api.openweathermap.org/data/2.5/forecast?q=";
-
-      let infoForcastLoc = `${apiUrlFor}${nameLoc}&units=metric&appid=${apiKey}`;
-      console.log(infoForcastLoc); 
-  
-      axios.get(infoForcastLoc).then(showForecastHourly);
-      axios.get(infoLoc).then(showPlace);
+      showPlace(nameLoc);
      }
  
 
 let place=document.querySelector("#currLoc");
 place.addEventListener("click", getLoc); 
 
+ showPlace("Paris");
 navigator.geolocation.getCurrentPosition(showPosition);

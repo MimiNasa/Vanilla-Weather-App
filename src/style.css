@@ -1,7 +1,8 @@
 #weather-app {
-  max-width: 900px;
+  max-width: 700px;
+  font-size: 13px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 5px;
   border: 2px solid #24648f;
   border-radius: 10px;
   background-image: url(https://images.pexels.com/photos/139366/pexels-photo-139366.jpeg?cs=srgb&dl=pexels-donald-tong-139366.jpg&fm=jpg);
@@ -10,21 +11,22 @@
 #left-card {
   margin: 5px auto;
   background-color: #bcd2e0;
-  padding: 5px;
+  padding: 2px;
 }
 
 #right-card {
   margin: 30px auto;
   background-color: #bcd2e0;
-  padding: 5px;
+  padding: 2px;
 }
 
 li {
   position: relative;
   display: block;
   text-align: center;
-  padding-left: 5px;
+  padding-left: 2px;
   margin: 0 auto;
+  font-size: 15px;
 }
 
 .informa {
@@ -39,17 +41,18 @@ li {
 #Forecast-weather {
   margin: 0 auto;
   list-style: none;
-  text-align: center;
+  text-align: left;
   padding: 2px;
 }
 
 #Forecast-days {
   list-style: none;
+  padding-right: 0px;
 }
 
 ul {
   padding: 0px;
-  text-align: center;
+  text-align: left;
 }
 
 #cityNow,
@@ -57,13 +60,16 @@ ul {
 #descrip,
 #max_min,
 #title2 {
-  font-size: 27px;
+  font-size: 20px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
 }
+#title2 {
+  padding-left: 15px;
+}
 
 #max_min {
-  font-size: 20px;
+  font-size: 14px;
   color: #0000008a;
 }
 
@@ -77,7 +83,7 @@ ul {
 
 #city,
 #estatus {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
