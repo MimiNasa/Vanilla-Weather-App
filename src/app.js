@@ -58,14 +58,6 @@
 function searching (event){
   event.preventDefault();
 
-  let Faranheit= document.querySelector("#fAH");
-  Faranheit.setAttribute("style","font-size:16px");
-  Faranheit.setAttribute("class","unactive");
-
-  let Celcius= document.querySelector("#celcius");
-  Celcius.setAttribute("style","font-size:30px");
-  Celcius.setAttribute("class","active");
-
   let nowCity=document.querySelector("#citySearch");
   showPlace(nowCity.value);
  }
@@ -74,6 +66,13 @@ function searching (event){
 
    function showPlace (response){
 
+  let Faranheit= document.querySelector("#fAH");
+  Faranheit.setAttribute("style","font-size:16px");
+  Faranheit.setAttribute("class","unactive");
+
+  let Celcius= document.querySelector("#celcius");
+  Celcius.setAttribute("style","font-size:30px");
+  Celcius.setAttribute("class","active");
     
   let apiKey = "c56134558ca84ab1e7072449202b8614";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
@@ -107,8 +106,6 @@ function searching (event){
   //Function to display weather information//
 
   function changeWeather(response){
-
-    console.log(response);
   
    let infoWeather= response.data.weather[0].main;
    let clima= document.querySelector("#temp");
@@ -223,8 +220,8 @@ let Celcius= document.querySelector("#celcius");
 Celcius.setAttribute("style","font-size:14px");
 Celcius.setAttribute("class","unactive");
 
-let nowCity=document.querySelector("#citySearch");
-  displayFarenheim(nowCity.value);
+let nowCity= document.querySelector("#cityNow");
+  displayFarenheim(nowCity.innerHTML);
 
 }
 
@@ -251,9 +248,28 @@ function changeSpeed (response){
 
   }
 
+  
+/////////link for Celcius//////////
+
+function changeCels(event)
+{
+event.preventDefault();
+
+let Faranheit= document.querySelector("#fAH");
+  Faranheit.setAttribute("style","font-size:16px");
+  Faranheit.setAttribute("class","unactive");
+
+  let Celcius= document.querySelector("#celcius");
+  Celcius.setAttribute("style","font-size:30px");
+  Celcius.setAttribute("class","active");
+
+let nowCity= document.querySelector("#cityNow");
+  showPlace (nowCity.innerHTML);
+
+}
 
 let tempC=document.querySelector("#celcius");
-tempC.addEventListener("click",searching);
+tempC.addEventListener("click",changeCels);
 
 let tempF=document.querySelector("#fAH");
 tempF.addEventListener("click",changeFah);
@@ -283,18 +299,7 @@ function showPosition(position){
 
     function nameCity (response){
 
-      let Faranheit= document.querySelector("#fAH");
-      Faranheit.setAttribute("style","font-size:14px");
-      Faranheit.setAttribute("class","unactive");
-
-      let Celcius= document.querySelector("#celcius");
-      Celcius.setAttribute("style","font-size:24px");
-      Celcius.setAttribute("class","active");
-
-      let nameLoc =document.querySelector("citySearch")
       nameLoc=`${response.data.name}`;
-
-      console.log(nameLoc);
       showPlace(nameLoc);
      }
  
@@ -303,4 +308,5 @@ let place=document.querySelector("#currLoc");
 place.addEventListener("click", getLoc); 
 
  showPlace("Paris");
-navigator.geolocation.getCurrentPosition(showPosition);
+
+

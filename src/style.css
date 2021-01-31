@@ -1,3 +1,7 @@
+body {
+  background-image: url(https://www.healthwire.co/wp-content/uploads/2020/07/weather-696x394.png);
+}
+
 #weather-app {
   max-width: 700px;
   font-size: 13px;
@@ -99,4 +103,9 @@ a.unactive {
   font-style: italic;
   font-size: 14px;
   display: block;
+}
+footer {
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
 }
