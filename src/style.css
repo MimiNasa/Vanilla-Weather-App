@@ -1,5 +1,5 @@
 body {
-  background-image: url(https://www.healthwire.co/wp-content/uploads/2020/07/weather-696x394.png);
+  background-image: url("weather-696x394.png");
 }
 
 #weather-app {
